@@ -90,7 +90,10 @@
                       <h1> Simplify your shopping experience </h1>
 
                     <h2>Enter your shopping list here: </h2>
-                        <textarea id="list" cols="80" rows="15"></textarea>
+                        <textarea id="list" cols="80" rows="15" placeholder="Apples
+Bananas
+Water
+Salt"></textarea>
                         <button class="Search_btn" onclick="categorize()">Categorize</button>
                     </div>
                   </div>
@@ -100,7 +103,7 @@
                       var input = $('#list').val();
 
                       // This line lower cases the user's input so that we can find it in the dictionary
-                      input = input.toLowerCase();
+                      input = input.toLowerCase().trim();
 
                       // Here we define the dictionary key : categories
                       const groceryItems = {
@@ -192,6 +195,8 @@
                       // If statement to print the category of the term if it's defined in the dictionary.
                       let result = "";
                       input.split("\n").forEach(item => {
+                        item = item.trim(); 
+
                         // Plural input support
                         if (item.endsWith('s')) {
                           item = item.substr(0, item.length - 1);
